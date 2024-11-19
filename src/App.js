@@ -11,6 +11,7 @@ function App() {
   const [loading, setLoading] = useState(false);
 
   useEffect(() => {
+    // getting weather for the city from the node api created
     const fetchData = async () => {
       if (city === '') return;
       setLoading(true);
