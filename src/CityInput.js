@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import InputWithLabels from './components/InputWithLabel';
 import CustomButton from './components/CustomButton';
+import { Tooltip } from '@mui/material';
 
 const CityInput = ({ setCity }) => {
   const [search, setSearch] = useState('');
@@ -14,14 +15,24 @@ const CityInput = ({ setCity }) => {
           type="text"
           placeholder="Enter the City Name"
         />
-        <CustomButton
-          label="Find"
-          additionalStyle={{ marginTop: '30px' }}
-          disabled={search === ''}
-          onClick={() => {
-            setCity(search);
-          }}
-        />
+        <Tooltip
+          title={
+            search === ''
+              ? 'Type a city name to search'
+              : `Find weather for ${search} now`
+          }
+        >
+          <div>
+            <CustomButton
+              label="Find"
+              additionalStyle={{ marginTop: '30px' }}
+              disabled={search === ''}
+              onClick={() => {
+                setCity(search);
+              }}
+            />
+          </div>
+        </Tooltip>
       </div>
     </div>
   );
